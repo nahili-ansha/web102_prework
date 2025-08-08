@@ -30,7 +30,7 @@ Here's a walkthrough of implemented features:
 Describe any challenges encountered while building the app.
 
 * Keeping track of the changes made in different Game Containers
-* Filtering and displaying a game with a specifc
+* Filtering and displaying a game with a specifc feature
 ## License
 
     Licensed under the Apache License, Version 2.0 (the "License");
