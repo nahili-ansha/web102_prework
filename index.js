@@ -187,17 +187,20 @@ const descriptionContainer = document.getElementById("description-container");
 
 
 // use filter or reduce to count the number of unfunded games
-
-
+const numUnfunded = GAMES_JSON.filter(game => game.pledged < game.goal).length;
 
 
 // create a string that explains the number of unfunded games using the ternary operator
-
+const summaryString = `A total of $${totalRaised.toLocaleString()} has been raised for ${GAMES_JSON.length} game${GAMES_JSON.length === 1 ? '' : 's'}. 
+Currently, ${numUnfunded} game${numUnfunded === 1 ? '' : 's'} remain unfunded. 
+We need your help to fund ${numUnfunded === 1 ? 'this amazing game' : 'these amazing games'}!`;
 
 
 
 // create a new DOM element containing the template string and append it to the description container
-
+const summaryElement = document.createElement("p");
+summaryElement.innerText = summaryString;
+descriptionContainer.appendChild(summaryElement);
 
 /************************************************************************************
  * Challenge 7: Select & display the top 2 games
@@ -215,10 +218,29 @@ const sortedGames =  GAMES_JSON.sort( (item1, item2) => {
 
 
 // use destructuring and the spread operator to grab the first and second games
-
+const [firstGame, secondGame, ...otherGames] = sortedGames;
 
 // create a new element to hold the name of the top pledge game, then append it to the correct element
+const firstGameElement = document.createElement("p");
+firstGameElement.innerText = `${firstGame.name}`;
+firstGameContainer.appendChild(firstGameElement);
+
 
 
 // do the same for the runner up item
+const secondGameElement = document.createElement("p");
+secondGameElement.innerText = `${secondGame.name}`;
+secondGameContainer.appendChild(secondGameElement);
 
+const searchInput = document.getElementById("search-input");
+const searchBtn = document.getElementById("search-btn");
+
+// optional challenge: add a search bar to filter games by name
+searchBtn.addEventListener("click", () => {
+    const query = searchInput.value.toLowerCase();
+    const filteredGames = GAMES_JSON.filter(game =>
+        game.name.toLowerCase().includes(query)
+    );
+    deleteChildElements(gamesContainer);
+    addGamesToPage(filteredGames);
+});

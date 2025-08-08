@@ -92,3 +92,39 @@ button {
     border-radius: 7px;
 }
 
+/* Search Container */
+#search-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px auto;
+  gap: 10px;
+  max-width: 500px;
+}
+
+/* Search Input */
+#search-input {
+  flex: 1;
+  padding: 10px 15px;
+  font-size: 16px;
+  border: 2px solid #0077b6;
+  border-radius: 5px;
+  outline: none;
+}
+
+/* Search Button */
+#search-btn {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #0077b6;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#search-btn:hover {
+  background-color: #023e8a;
+}
+
+
